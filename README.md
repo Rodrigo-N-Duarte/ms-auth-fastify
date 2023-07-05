@@ -13,6 +13,10 @@ npm install
 ## Usage
 
 Crie um arquivo .env na raiz do projeto e preencha os dados com as configurações da sua máquina seguindo o padrão abaixo:
+```txt
+DB_PORT - Porta do postgresql
+DB_USERNAME & DB_PASSWORD - User e Senha do postgresql
+```
 
 ```dotenv
 JWT_TOKEN=senhasupersecreta
