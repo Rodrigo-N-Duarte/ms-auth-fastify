@@ -22,7 +22,13 @@ DB_USERNAME="user"
 DB_PASSWORD="password"
 ```
 
-Também crie um banco de dados no postgresql na sua máquina, chamado 'ms-email'.
+Também crie um banco de dados no postgresql na sua máquina, chamado 'ms-login'.
+
+Start:
+
+```bash
+npm start
+```
 
 #### Criar usuário
 
@@ -68,6 +74,24 @@ Também crie um banco de dados no postgresql na sua máquina, chamado 'ms-email'
 
 ```http
   DELETE /auth/:id
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `number` | **Obrigatório**. Id usuário. |
+
+## Rotas com autorização do JWT
+
+#### Get user por ID
+```http
+  GET /user/:id
+```
+#### Get all users
+```http
+  GET /user
+```
+#### Update user por ID
+```http
+  PUT /user/:id
 ```
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
