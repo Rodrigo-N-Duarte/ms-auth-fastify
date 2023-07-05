@@ -12,7 +12,4 @@ export class UserController {
     async updateUser(req: FastifyRequest, reply: FastifyReply) {
         return await userService.updateUser(req, reply);
     }
-    async createUser(req: FastifyRequest, reply: FastifyReply) {
-        return await userService.createUser(req, reply);
-    }
 }
