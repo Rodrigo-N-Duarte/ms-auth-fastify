@@ -1,6 +1,5 @@
 export enum UserHistoryEnum {
     LOGGED = "LOGGED",
     REGISTERED = "REGISTERED",
-    LOGOUT = "LOGOUT",
-    DELETED = "DELETED"
+    LOGOUT = "LOGOUT"
 }

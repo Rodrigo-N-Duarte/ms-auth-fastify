@@ -13,8 +13,8 @@ export class AuthService {
         if (!token) {
             return reply.status(401).send(new Error(Messages.ACESSO_NEGADO))
         }
-        jwt.verify(token, String(process.env.JWT_SECRET), (err: any) => {
-            if (err) return reply.status(401).send(new Error(Messages.TOKEN_INVALIDO))
+        jwt.verify(token, process.env.JWT_TOKEN, (err: any) => {
+            if (err) return reply.status(403).send(new Error(Messages.TOKEN_INVALIDO))
             next()
         })
     }
@@ -39,7 +39,7 @@ export class AuthService {
                 return reply.status(404).send(new Error(Messages.SENHA_INVALIDA))
             }
             await this.updateHistory(userExists, UserHistoryEnum.LOGGED)
-            const token = jwt.sign({uuid: userExists?.id}, String(process.env.JWT_SECRET))
+            const token = jwt.sign({id: userExists?.id}, process.env.JWT_TOKEN)
             return reply.send(token)
         }
         return reply.status(422).send(new Error(Messages.USUARIO_NAO_ENCONTRADO))
@@ -48,7 +48,7 @@ export class AuthService {
     async register(req: any, reply: any) {
         const {name, email, password, confirmPassword} = req.body
         try {
-            const validation = await this.validRegister(name, email, password, confirmPassword)
+            const validation: string = await this.validRegister(name, email, password, confirmPassword)
             if (validation) {
                 return reply.status(400).send(new Error(validation))
             }
@@ -60,10 +60,9 @@ export class AuthService {
             user.password = hash
             await user.save()
             await this.updateHistory(user, UserHistoryEnum.REGISTERED)
-            const token = jwt.sign({id: user?.id}, String(process.env.JWT_SECRET))
+            const token = jwt.sign({id: user?.id}, process.env.JWT_TOKEN)
             return reply.send(token)
-        }
-        catch (e) {
+        } catch (e) {
             return reply.status(400).send(new Error(Messages.ERRO))
         }
     }
