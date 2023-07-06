@@ -1,6 +1,6 @@
 # Login Service NodeJS
 
-MIcro serviço com node e typescript usando jwt-token e bcrypt para o salvamento no banco de dados.
+Microservice com node e typescript usando jwt-token e bcrypt para o salvamento no banco de dados.
 
 ## Installation
 
@@ -10,31 +10,30 @@ Clone o projeto e execute o comando:
 npm install
 ```
 
-## Usage
-
 Crie um arquivo .env na raiz do projeto e preencha os dados com as configurações da sua máquina seguindo o padrão abaixo:
-```txt
-DB_PORT - Porta do postgresql
-DB_USERNAME & DB_PASSWORD - User e Senha do postgresql
-```
 
 ```dotenv
-JWT_TOKEN=senhasupersecreta
+JWT_TOKEN=senha-super-ultra-mega-secreta ## Segredo do jwt-token
 
-DB_PORT=5432
-DB_USERNAME="user"
-DB_PASSWORD="password"
+DB_PORT=5432 ## Porta padrão do postgresql
+DB_USERNAME=user ## Username postgresql
+DB_PASSWORD=password ## Password postgresql
 ```
 
 Também crie um banco de dados no postgresql na sua máquina, chamado 'ms-login'.
 
-Start:
+## Usage
 
+Versão do node recomendada: 20
+
+Start:
 ```bash
 npm start
 ```
 
-#### Criar usuário
+## Routes
+
+#### - Criar usuário
 
 ```http
   POST /auth/register
@@ -56,7 +55,7 @@ npm start
 }
 ```
 
-#### Fazer login
+#### - Fazer login
 
 ```http
   POST /auth/login
@@ -74,7 +73,7 @@ npm start
 }
 ```
 
-#### Deletar usuário
+#### - Deletar usuário
 
 ```http
   DELETE /auth/:id
@@ -83,17 +82,17 @@ npm start
 | :-------- | :------- | :------------------------- |
 | `id` | `number` | **Obrigatório**. Id usuário. |
 
-## Rotas com autorização do JWT
+## Routes com autorização do JWT
 
-#### Get user por ID
+#### - Get user por ID
 ```http
   GET /user/:id
 ```
-#### Get all users
+#### - Get all users
 ```http
   GET /user
 ```
-#### Update user por ID
+#### - Update user por ID
 ```http
   PUT /user/:id
 ```
@@ -101,4 +100,4 @@ npm start
 | :-------- | :------- | :------------------------- |
 | `id` | `number` | **Obrigatório**. Id usuário. |
 
-
+#### ⚠️ Importante: Nessas três rotas é necessário informar o jwt-token no ['authorization'] nos headers da requisição, esse que é gerado quando o usuário faz login ou se cadastra. Se não, ocorrerá o erro de acesso negado.
