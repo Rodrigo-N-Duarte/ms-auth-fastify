@@ -1,6 +1,15 @@
 # Login Service NodeJS
 
-Microservice com node e typescript usando jwt-token e bcrypt para o salvamento no banco de dados.
+Microservice para validação de login e histórico de usuário.
+
+### Tecnologias:
+- NODE
+- TYPESCRIPT
+- FASTIFY
+- TYPEORM
+- JWT-TOKEN
+- BCRYPT
+- POSTGRESQL
 
 ## Installation
 
