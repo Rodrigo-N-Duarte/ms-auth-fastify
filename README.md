@@ -19,21 +19,14 @@ Clone o projeto e execute o comando:
 npm install
 ```
 
-Crie um arquivo .env na raiz do projeto e preencha os dados com as configurações da sua máquina seguindo o padrão abaixo:
-
-```dotenv
-JWT_TOKEN=senha-super-ultra-mega-secreta ## Segredo do jwt-token
-
-DB_PORT=5432 ## Porta padrão do postgresql
-DB_USERNAME=user ## Username postgresql
-DB_PASSWORD=password ## Password postgresql
-```
-
-Também crie um banco de dados no postgresql na sua máquina, chamado 'ms-login'.
-
 ## Usage
 
 Versão do node recomendada: 20
+
+Database container
+```bash
+docker-compose up -d
+```
 
 Start:
 ```bash
