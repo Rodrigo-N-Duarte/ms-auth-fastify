@@ -1,0 +1,18 @@
+version: '3'
+services:
+  mysql:
+    image: mysql
+    restart: always
+    container_name: mysql
+    ports:
+      - "3307:3306"
+    environment:
+        MYSQL_DATABASE: 'ms-login'
+        MYSQL_PASSWORD: 'root'
+        MYSQL_ROOT_PASSWORD: 'root'
+    expose:
+      - '3306'
+    volumes:
+      - my-db:/var/lib/mysql
+volumes:
+    my-db:

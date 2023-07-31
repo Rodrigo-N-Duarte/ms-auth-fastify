@@ -2,11 +2,11 @@ import { createConnection, ConnectionOptions } from 'typeorm';
 import 'dotenv/config'
 
 export const datasource: ConnectionOptions = {
-    type: 'postgres',
-    host: 'localhost',
-    port: Number(process.env.DB_PORT),
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
+    type: 'mysql',
+    host: '127.0.0.1',
+    port: 3307,
+    username: 'root',
+    password: 'root',
     database: 'ms-login',
     entities: [
         __dirname + '/src/models/*.ts'
